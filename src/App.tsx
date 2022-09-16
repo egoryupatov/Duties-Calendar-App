@@ -10,8 +10,6 @@ function App() {
     const selectDate = useAppSelector(selectCurrentDate)
     const url = `/month/${selectDate.getFullYear()}/${selectDate.getMonth()}/${selectDate.getDate()}`
 
-    console.log('Дата в селекторе: ' + selectDate.getDate())
-
     return (
 
         <Routes>

@@ -1,28 +1,15 @@
 import React, {useEffect} from "react";
 import {selectCurrentDate, sortedDuties} from "../../store/dutiesSlice";
 import { Month } from "./Month";
-import {useAppDispatch, useAppSelector} from "../../store/hooks";
-import {useParams} from "react-router-dom";
-import {getCurrentDate} from "../../store/dutiesSlice";
+import {useAppSelector} from "../../store/hooks";
+import {useSetDateFromUrl} from "../../utils/useSetDateFromUrl";
 
 export const MonthContainer: React.FC = () => {
 
   const dutiesMap = useAppSelector(sortedDuties)
   const selectDate = useAppSelector(selectCurrentDate)
-  const params = useParams()
-  const dispatch = useAppDispatch()
 
-  useEffect(() => {
-
-    let month = Number(params.month)
-    let year = Number(params.year)
-    let day = Number(params.day)
-
-    const date = new Date(year, month, day)
-
-    dispatch(getCurrentDate(date))
-
-  }, [])
+  useSetDateFromUrl();
 
   const getCurrentDayNumber = new Date(
       selectDate.getFullYear(),
