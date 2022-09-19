@@ -1,21 +1,17 @@
 import { getNumberOfDaysInCurrentMonth } from "./getNumberOfDaysInCurrentMonth";
 
-export const getDaysInCurrentWeek = (selectDate:Date) => {
-
+export const getDaysInCurrentWeek = (selectDate: Date) => {
   const numberOfDaysInCurrentMonth = getNumberOfDaysInCurrentMonth(selectDate);
-
   let daysInCurrentWeek: number[] = [];
+  const sunday = selectDate.getDate() - selectDate.getDay();
 
-  if (
-    daysInCurrentWeek[daysInCurrentWeek.length - 1] + 7 >
-    numberOfDaysInCurrentMonth
-  ) {
-    for (let i = daysInCurrentWeek[0]; i <= numberOfDaysInCurrentMonth; i++) {
+  if (sunday + 7 > numberOfDaysInCurrentMonth) {
+    for (let i = sunday; i <= numberOfDaysInCurrentMonth; i++) {
       daysInCurrentWeek.push(i);
     }
   } else {
     for (
-      let i = selectDate.getDate() - selectDate.getDay();
+      let i = sunday;
       i < selectDate.getDate() + (7 - selectDate.getDay());
       i++
     ) {
@@ -24,5 +20,4 @@ export const getDaysInCurrentWeek = (selectDate:Date) => {
   }
 
   return daysInCurrentWeek;
-
 };

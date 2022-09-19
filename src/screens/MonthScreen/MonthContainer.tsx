@@ -1,13 +1,15 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {selectCurrentDate, sortedDuties} from "../../store/dutiesSlice";
 import { Month } from "./Month";
 import {useAppSelector} from "../../store/hooks";
 import {useSetDateFromUrl} from "../../utils/useSetDateFromUrl";
+import {getCurrentMonthDays} from "../../utils/getCurrentMonthDays";
 
 export const MonthContainer: React.FC = () => {
 
   const dutiesMap = useAppSelector(sortedDuties)
   const selectDate = useAppSelector(selectCurrentDate)
+  const currentMonthDays = getCurrentMonthDays(selectDate)
 
   useSetDateFromUrl();
 
@@ -27,18 +29,6 @@ export const MonthContainer: React.FC = () => {
       selectDate.getMonth() + 1,
       0
   ).getDay();
-
-  const numberOfDaysInCurrentMonth = new Date(
-      selectDate.getFullYear(),
-      selectDate.getMonth() + 1,
-      0
-  ).getDate();
-
-  let currentMonthDays: number[] = [];
-
-  for (let i = 1; i <= numberOfDaysInCurrentMonth; i++) {
-    currentMonthDays.push(i);
-  }
 
   let prevMonthDays = [];
 

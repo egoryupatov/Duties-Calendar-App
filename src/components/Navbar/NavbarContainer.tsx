@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
   changeCustomDateDisplay,
-  changeStatsDisplay,
+  changeStatsDisplay, getCurrentDate,
   selectCurrentDate,
   selectIsCustomDateActive,
   selectIsWeekDisplay,
@@ -71,10 +71,12 @@ export const NavbarContainer: React.FC<NavbarProps> = (props) => {
   };
 
   const goHome = () => {
+    dispatch(getCurrentDate(new Date()))
     navigate(
-      `/month/${selectDate.getFullYear()}/${selectDate.getMonth()}/${selectDate.getDate()}`
+      `/month/${new Date().getFullYear()}/${new Date().getMonth()}/${new Date().getDate()}`
     );
   };
+
 
   return (
     <Navbar

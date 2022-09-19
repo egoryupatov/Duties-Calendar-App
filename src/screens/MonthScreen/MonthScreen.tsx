@@ -58,7 +58,7 @@ export const MonthScreen: React.FC = () => {
     dispatch(changeCalendarDisplay(true));
     navigate(
       `/week/${selectDate.getFullYear()}/${selectDate.getMonth()}/${selectDate.getDate()}`
-    );
+)
   };
 
   return (
