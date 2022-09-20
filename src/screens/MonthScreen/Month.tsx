@@ -3,7 +3,7 @@ import {Cell, CellOut, Row} from "../../styles/general.styled";
 import { DutyCell } from "./DutyCell";
 import { Duties } from "../../store/dutiesSlice";
 
-interface MonthContainerProps {
+export interface MonthContainerProps {
   prevMonthDays: number[];
   currentMonthDays: number[];
   nextMonthDays: number[];
