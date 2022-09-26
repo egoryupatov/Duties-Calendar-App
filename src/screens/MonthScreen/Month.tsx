@@ -17,19 +17,19 @@ export const Month: React.FC<MonthContainerProps> = (props) => {
     <Row>
 
       {props.prevMonthDays.map((prevMonthDay) => (
-        <CellOut>{prevMonthDay}</CellOut>
+        <CellOut key={prevMonthDay}>{prevMonthDay}</CellOut>
       ))}
 
       {props.currentMonthDays.map((day: number) => {
         return props.dutiesMap[day] ? (
-          <DutyCell text={props.dutiesMap[day]?.engineer.name} day={day}  />
+          <DutyCell key={day} text={props.dutiesMap[day]?.engineer.name} day={day}  />
         ) : (
-          <Cell>{day}</Cell>
+          <Cell key={day}>{day}</Cell>
         );
       })}
 
       {props.nextMonthDays.map((nextMonthDay: number) => (
-        <CellOut>{nextMonthDay}</CellOut>
+        <CellOut key={nextMonthDay}>{nextMonthDay}</CellOut>
       ))}
     </Row>
   );

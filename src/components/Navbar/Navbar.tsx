@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { Button } from "../../styles/general.styled";
 import { CustomDateContainer } from "../CustomDate/CustomDateContainer";
 
-interface NavbarProps {
+export interface NavbarProps {
   weekScreenActive: boolean;
   numberOfDaysInCurrentMonth: number;
   selectDate: Date;
@@ -27,7 +27,7 @@ interface NavbarProps {
   switchToWeekDisplay?: () => void;
   switchToMonthDisplay?: () => void;
   switchStatsDisplay: () => void;
-  isCustomDateActive: boolean
+  isCustomDateActive: boolean;
 }
 
 export const Navbar: React.FC<NavbarProps> = (props) => {
@@ -50,22 +50,8 @@ export const Navbar: React.FC<NavbarProps> = (props) => {
         )}
       </MonthNamesContainerStyled>
 
-
-
-
-
-
-
-
       <ButtonsContainerStyled>
-
-
         {props.weekScreenActive ? (
-
-
-
-
-
           <>
             <Link
               to={`/week/${props.selectDate.getFullYear()}/${props.selectDate.getMonth()}/${props.prevWeek()}`}
@@ -78,17 +64,7 @@ export const Navbar: React.FC<NavbarProps> = (props) => {
               <Arrow onClick={props.switchToNextPeriod}>{">"}</Arrow>
             </Link>
           </>
-
-
-
-
-
         ) : (
-
-
-
-
-
           <>
             <Link
               to={`/month/${props.selectDate.getFullYear()}/${props.prevMonth()}`}
@@ -101,10 +77,6 @@ export const Navbar: React.FC<NavbarProps> = (props) => {
               <Arrow onClick={props.switchToNextPeriod}>{">"}</Arrow>
             </Link>
           </>
-
-
-
-
         )}
 
         <Button onClick={props.goHome}>Home</Button>

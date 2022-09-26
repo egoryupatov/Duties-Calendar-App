@@ -2,6 +2,7 @@ import {Month} from "../Month";
 import {render, screen} from "@testing-library/react";
 import {MonthContainerProps} from "../Month";
 import {getCurrentMonthDays} from "../../../utils/getCurrentMonthDays";
+import '@testing-library/jest-dom/extend-expect';
 
 describe("Month", () => {
 
@@ -11,7 +12,7 @@ describe("Month", () => {
 
         const prevMonthDays = [1,2,3]
         const nextMonthDays = [1,2,3]
-        const currentMonthDays = getCurrentMonthDays(new Date(2022, 8))
+        const currentMonthDays = getCurrentMonthDays(new Date(2022, 8, 2))
 
         render(<Month prevMonthDays={prevMonthDays} currentMonthDays={currentMonthDays} nextMonthDays={nextMonthDays} dutiesMap={dutiesMap}/>)
 
