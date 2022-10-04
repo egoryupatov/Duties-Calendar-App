@@ -13,6 +13,7 @@ import { Navbar } from "./Navbar";
 import { getCurrentMonthNameShort } from "../../utils/getCurrentMonthNameShort";
 import { getNextMonthNameShort } from "../../utils/getNextMonthNameShort";
 import { getCurrentYearNumber } from "../../utils/getCurrentYearNumber";
+import {getCurrentMonthNameLong} from "../../utils/getCurrentMonthNameLong";
 
 export interface NavbarProps {
   switchToPreviousPeriod: () => void;
@@ -29,6 +30,7 @@ export const NavbarContainer: React.FC<NavbarProps> = (props) => {
   const dispatch = useAppDispatch();
   const nextMonthNameShort = getNextMonthNameShort(selectDate);
   const currentMonthNameShort = getCurrentMonthNameShort(selectDate);
+  const currentMonthNameLong = getCurrentMonthNameLong(selectDate);
   const numberOfDaysInCurrentMonth = getNumberOfDaysInCurrentMonth(selectDate);
   const currentYearNumber = getCurrentYearNumber(selectDate);
 
@@ -81,6 +83,7 @@ export const NavbarContainer: React.FC<NavbarProps> = (props) => {
   return (
     <Navbar
       currentMonthNameShort={currentMonthNameShort}
+      currentMonthNameLong={currentMonthNameLong}
       currentYearNumber={currentYearNumber}
       nextMonthNameShort={nextMonthNameShort}
       numberOfDaysInCurrentMonth={numberOfDaysInCurrentMonth}

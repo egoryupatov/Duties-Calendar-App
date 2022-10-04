@@ -5,6 +5,7 @@ import {
   Cell,
   Row,
   FirstRow,
+    FirstRowCell
 } from "./EngineersList.styled";
 import { useAppSelector } from "../../store/hooks";
 import {selectDuties, selectIsWeekDisplay} from "../../store/dutiesSlice";
@@ -40,8 +41,8 @@ export const EngineersList: React.FC = () => {
     <EngineersListStyled>
       <EngineersTable>
         <FirstRow>
-          <div>NAME</div>
-          <div>NUMBER OF TIMES</div>
+          <FirstRowCell>ENGINEER</FirstRowCell>
+          <FirstRowCell>DUTIES</FirstRowCell>
         </FirstRow>
 
 

@@ -1,7 +1,10 @@
 import React from "react";
-import {Cell, CellOut, Row} from "../../styles/general.styled";
+import {Cell, CellOut, CalendarBodyStyled} from "../../styles/general.styled";
 import { DutyCell } from "./DutyCell";
 import { Duties } from "../../store/dutiesSlice";
+import {DaysCell, DaysContainerStyled} from "../../components/Navbar/Navbar.styled";
+import {dayNames} from "../../constants/dayNames";
+import {BodyContainerStyled} from "../../components/Navbar/Navbar.styled";
 
 export interface MonthContainerProps {
   prevMonthDays: number[];
@@ -14,7 +17,15 @@ export const Month: React.FC<MonthContainerProps> = (props) => {
 
   return (
 
-    <Row>
+<BodyContainerStyled>
+
+      <DaysContainerStyled>
+        {dayNames.map((dayName: string) => (
+            <DaysCell>{dayName}</DaysCell>
+        ))}
+      </DaysContainerStyled>
+
+    <CalendarBodyStyled>
 
       {props.prevMonthDays.map((prevMonthDay) => (
         <CellOut key={prevMonthDay}>{prevMonthDay}</CellOut>
@@ -31,6 +42,7 @@ export const Month: React.FC<MonthContainerProps> = (props) => {
       {props.nextMonthDays.map((nextMonthDay: number) => (
         <CellOut key={nextMonthDay}>{nextMonthDay}</CellOut>
       ))}
-    </Row>
+    </CalendarBodyStyled>
+</BodyContainerStyled>
   );
 };

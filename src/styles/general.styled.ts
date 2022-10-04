@@ -4,6 +4,7 @@ export const ContainerStyled = styled.div`
   display:flex;
   flex-direction: row;
   width: 100%;
+  height:100vh;
 `
 
 export const WrapperStyled = styled.div`
@@ -11,19 +12,22 @@ export const WrapperStyled = styled.div`
   flex-direction: column;
   background: #f8f8f8;
   width: 100%;
+  
 `;
 
 export const HeaderStyled = styled.div`
   display: flex;
   flex-direction: column;
   background-color: white;
-  border-right: #dadce0 1px solid;
+  border-bottom: #dadce0 1px solid;
+
 `;
 
 export const BodyStyled = styled.div`
   display: flex;
   background: white;
-  flex-direction: column;
+  flex-direction: row;
+  height:100%;
 `;
 
 export const Button = styled.button`
@@ -38,22 +42,24 @@ export const Button = styled.button`
   font-weight: 500;
 `
 
-export const Row = styled.div`
+export const CalendarBodyStyled = styled.div`
   display: flex;
   flex-wrap: wrap;
   border-bottom: #dadce0 1px solid;
-  height: 92vh;
+  height:100%;
 `;
 
 export const Cell = styled.div`
   display: flex;
+  flex-wrap: wrap;
   width: calc(100% / 7);
   padding: 20px 0px 0px 20px;
   border-right: #dadce0 1px solid;
   border-bottom: #dadce0 1px solid;
   color: #3c4043;
+  height:calc(85vh/5);
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
 `;
 
 export const DutyCellStyled = styled(Cell)`

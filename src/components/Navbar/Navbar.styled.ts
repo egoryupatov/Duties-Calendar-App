@@ -3,14 +3,15 @@ import styled from "styled-components";
 export const NavBarStyled = styled.div`
   display:flex;
   justify-content: space-between;
-  padding: 0px 20px 0px 20px;
-  height:5vh;
+  padding: 10px;
+  height: 10vh;
   position: relative;
 `
 
 export const MonthNamesContainerStyled = styled.div`
   display:flex;
   font-weight: 400;
+  color: #3C4043;
   font-size: 22px;
   align-items: center;
 `
@@ -22,10 +23,17 @@ export const ButtonsContainerStyled = styled.div`
 
 export const DaysContainerStyled = styled.div`
   display:flex;
-  border-top: #dadce0 1px solid;
   border-bottom: #dadce0 1px solid;
-  height:3vh;
+  color: #3C4043;
+  height:5vh;
+  font-size: 14px;
 `
+
+export const BodyContainerStyled = styled.div`
+  display:flex;
+  flex-direction: column;
+`
+
 export const DaysCell = styled.div`
   display: flex;
   width: calc(100% / 7);

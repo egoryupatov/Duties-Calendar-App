@@ -14,6 +14,7 @@ export interface NavbarProps {
   numberOfDaysInCurrentMonth: number;
   selectDate: Date;
   currentMonthNameShort: string;
+  currentMonthNameLong: string;
   nextMonthNameShort: string;
   currentYearNumber: string;
   switchToNextPeriod: () => void;
@@ -45,7 +46,7 @@ export const Navbar: React.FC<NavbarProps> = (props) => {
           </div>
         ) : (
           <div>
-            {props.currentMonthNameShort + " " + props.currentYearNumber}
+            {props.currentMonthNameLong + " " + props.currentYearNumber}
           </div>
         )}
       </MonthNamesContainerStyled>
@@ -79,7 +80,7 @@ export const Navbar: React.FC<NavbarProps> = (props) => {
           </>
         )}
 
-        <Button onClick={props.goHome}>Home</Button>
+        <Button onClick={props.goHome}>Today</Button>
         <Button onClick={props.customDateDisplay}>Set Custom Date</Button>
         <Button onClick={props.switchToWeekDisplay}>Week</Button>
         <Button onClick={props.switchToMonthDisplay}>Month</Button>

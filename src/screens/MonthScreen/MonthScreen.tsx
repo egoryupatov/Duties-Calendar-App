@@ -63,6 +63,9 @@ export const MonthScreen: React.FC = () => {
 
   return (
     <ContainerStyled>
+
+
+
       <WrapperStyled>
         <HeaderStyled>
           <NavbarContainer
@@ -71,18 +74,21 @@ export const MonthScreen: React.FC = () => {
             switchToWeekDisplay={switchToWeekDisplay}
           />
 
-          <DaysContainerStyled>
-            {dayNames.map((dayName: string) => (
-              <DaysCell>{dayName}</DaysCell>
-            ))}
-          </DaysContainerStyled>
+
+
         </HeaderStyled>
 
         <BodyStyled>
+
+
+          <Stats week={isWeekScreenActive} />
+
           <MonthContainer />
+
+
         </BodyStyled>
       </WrapperStyled>
-      {statsActive ? <Stats week={isWeekScreenActive} /> : ""}
+
     </ContainerStyled>
   );
 };

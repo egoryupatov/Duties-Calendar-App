@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  Row,
+  CalendarBodyStyled,
   WeekCell,
   WeekOut,
   WeekCellDuty,
@@ -17,7 +17,7 @@ interface WeekContainerProps {
 
 export const Week: React.FC<WeekContainerProps> = (props) => {
   return (
-    <Row>
+    <CalendarBodyStyled>
 
       {props.daysInCurrentWeek.map((day: number) => {
         return props.dutiesMap[day] ? (
@@ -39,6 +39,6 @@ export const Week: React.FC<WeekContainerProps> = (props) => {
       ) : (
         <></>
       )}
-    </Row>
+    </CalendarBodyStyled>
   );
 };

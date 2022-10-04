@@ -1,25 +1,28 @@
 import styled from "styled-components";
 
 export const EngineersListStyled = styled.div`
-  border-top: #dadce0 1px solid;
+
 `;
 
 export const EngineersTable = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+
 `;
 
 export const EngineersTableHeader = styled.div`
   display: flex;
   align-items: center;
-  height: 5vh;
-  justify-content: space-between;
+  justify-content: center;
   background-color: white;
   font-size: 22px;
   font-weight: 400;
-  padding: 0px 0px 0px 20px;
+  height:10vh;
+  padding: 10px;
   border-right: #dadce0 1px solid;
+  color: #3C4043;
+  position: relative;
+  //border-bottom: #dadce0 1px solid;
 `;
 
 export const Row = styled.div`
@@ -33,20 +36,30 @@ interface CellStyled {
 
 export const Cell = styled.div<CellStyled>`
   display: flex;
-  padding: 10px 20px 10px 20px;
+  padding:10px;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   border-bottom: #dadce0 1px solid;
   border-right: #dadce0 1px solid;
+  text-align: center;
+  align-items: center;
+  height: calc(85vh/15);
   width: 100%;
   justify-content: ${(props) => props.justify || "start"};
 `;
 
+export const FirstRowCell = styled(Cell)`
+justify-content: center;
+  align-items:  center;
+  color: #3C4043;
+  font-weight: bold;
+  height:100%;
+`;
+
 export const FirstRow = styled.div`
   display: flex;
-  border-bottom: #dadce0 1px solid;
-  padding: 10px 20px 10px 20px;
-  justify-content: space-between;
+  flex-direction: row;
+  color: #3C4043;
   font-weight: bold;
-  height:3vh;
+  height:5vh;
 `;
