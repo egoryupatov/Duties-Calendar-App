@@ -44,8 +44,6 @@ export const MonthContainer: React.FC = () => {
 
   return (
 
-
-
       <Month
           prevMonthDays={prevMonthDays}
           currentMonthDays={currentMonthDays}

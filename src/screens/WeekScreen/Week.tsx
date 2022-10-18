@@ -6,6 +6,12 @@ import {
   WeekCellDuty,
 } from "../../styles/general.styled";
 import { Duties } from "../../store/dutiesSlice";
+import {
+  DaysCell,
+  DaysContainerStyled,
+} from "../../components/Navbar/Navbar.styled";
+import { dayNames } from "../../constants/dayNames";
+import { BodyContainerStyled } from "../../components/Navbar/Navbar.styled";
 
 interface WeekContainerProps {
   daysInCurrentWeek: number[];
@@ -17,28 +23,34 @@ interface WeekContainerProps {
 
 export const Week: React.FC<WeekContainerProps> = (props) => {
   return (
-    <CalendarBodyStyled>
+    <BodyContainerStyled>
+      <DaysContainerStyled>
+        {dayNames.map((dayName: string) => (
+          <DaysCell>{dayName}</DaysCell>
+        ))}
+      </DaysContainerStyled>
+      <CalendarBodyStyled>
+        {props.daysInCurrentWeek.map((day: number) => {
+          return props.dutiesMap[day] ? (
+            <WeekCellDuty>
+              <div>{day}</div>
+              <div>{props.dutiesMap[day]?.engineer.name}</div>
+            </WeekCellDuty>
+          ) : (
+            <WeekCell>{day}</WeekCell>
+          );
+        })}
 
-      {props.daysInCurrentWeek.map((day: number) => {
-        return props.dutiesMap[day] ? (
-          <WeekCellDuty>
-            <div>{day}</div>
-            <div>{props.dutiesMap[day]?.engineer.name}</div>
-          </WeekCellDuty>
+        {props.daysInCurrentWeek[0] + 7 > props.numberOfDaysInCurrentMonth ? (
+          <>
+            {props.daysInWeekOfNextMonth.map((nextWeekDay: number) => (
+              <WeekOut>{nextWeekDay}</WeekOut>
+            ))}
+          </>
         ) : (
-          <WeekCell>{day}</WeekCell>
-        );
-      })}
-
-      {props.daysInCurrentWeek[0] + 7 > props.numberOfDaysInCurrentMonth ? (
-        <>
-          {props.daysInWeekOfNextMonth.map((nextWeekDay: number) => (
-            <WeekOut>{nextWeekDay}</WeekOut>
-          ))}
-        </>
-      ) : (
-        <></>
-      )}
-    </CalendarBodyStyled>
+          <></>
+        )}
+      </CalendarBodyStyled>
+    </BodyContainerStyled>
   );
 };

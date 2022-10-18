@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
   changeCustomDateDisplay,
-  changeStatsDisplay, getCurrentDate,
+  changeStatsDisplay,
+  getCurrentDate,
   selectCurrentDate,
   selectIsCustomDateActive,
   selectIsWeekDisplay,
@@ -13,16 +14,16 @@ import { Navbar } from "./Navbar";
 import { getCurrentMonthNameShort } from "../../utils/getCurrentMonthNameShort";
 import { getNextMonthNameShort } from "../../utils/getNextMonthNameShort";
 import { getCurrentYearNumber } from "../../utils/getCurrentYearNumber";
-import {getCurrentMonthNameLong} from "../../utils/getCurrentMonthNameLong";
+import { getCurrentMonthNameLong } from "../../utils/getCurrentMonthNameLong";
 
-export interface NavbarProps {
+export interface NavbarContainerProps {
   switchToPreviousPeriod: () => void;
   switchToNextPeriod: () => void;
   switchToWeekDisplay?: () => void;
   switchToMonthDisplay?: () => void;
 }
 
-export const NavbarContainer: React.FC<NavbarProps> = (props) => {
+export const NavbarContainer: React.FC<NavbarContainerProps> = (props) => {
   const weekScreenActive = useAppSelector(selectIsWeekDisplay);
   const isCustomDateActive = useAppSelector(selectIsCustomDateActive);
   const selectDate = useAppSelector(selectCurrentDate);
@@ -58,27 +59,26 @@ export const NavbarContainer: React.FC<NavbarProps> = (props) => {
 
   const nextWeek = () => {
     return new Date(
-        selectDate.getFullYear(),
-        selectDate.getMonth(),
-        selectDate.getDate() + 7
+      selectDate.getFullYear(),
+      selectDate.getMonth(),
+      selectDate.getDate() + 7
     ).getDate();
   };
 
   const prevWeek = () => {
     return new Date(
-        selectDate.getFullYear(),
-        selectDate.getMonth() - 1,
-    selectDate.getDate() - 7
-  ).getDate();
+      selectDate.getFullYear(),
+      selectDate.getMonth() - 1,
+      selectDate.getDate() - 7
+    ).getDate();
   };
 
   const goHome = () => {
-    dispatch(getCurrentDate(new Date()))
+    dispatch(getCurrentDate(new Date()));
     navigate(
       `/month/${new Date().getFullYear()}/${new Date().getMonth()}/${new Date().getDate()}`
     );
   };
-
 
   return (
     <Navbar

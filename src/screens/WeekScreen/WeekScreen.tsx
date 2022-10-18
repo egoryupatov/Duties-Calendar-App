@@ -28,8 +28,6 @@ import { dayNames } from "../../constants/dayNames";
 export const WeekScreen: React.FC = () => {
   const dispatch = useAppDispatch();
   const selectDate = useAppSelector(selectCurrentDate);
-  const statsActive = useAppSelector(selectIsStatsDisplay);
-  const weekScreenActive = useAppSelector(selectIsWeekDisplay);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -44,7 +42,7 @@ export const WeekScreen: React.FC = () => {
         new Date(
           selectDate.getFullYear(),
           selectDate.getMonth(),
-      selectDate.getDate() + 7
+          selectDate.getDate() + 7
         )
       )
     );
@@ -64,7 +62,7 @@ export const WeekScreen: React.FC = () => {
 
   const switchToMonthDisplay = () => {
     dispatch(changeCalendarDisplay(false));
-    navigate(`/month/${selectDate.getFullYear()}/${selectDate.getMonth()}`)
+    navigate(`/month/${selectDate.getFullYear()}/${selectDate.getMonth()}`);
   };
 
   return (
@@ -76,19 +74,12 @@ export const WeekScreen: React.FC = () => {
             switchToNextPeriod={switchToNextWeek}
             switchToMonthDisplay={switchToMonthDisplay}
           />
-
-          <DaysContainerStyled>
-            {dayNames.map((dayName: string) => (
-              <DaysCell>{dayName}</DaysCell>
-            ))}
-          </DaysContainerStyled>
         </HeaderStyled>
 
         <BodyStyled>
+          <Stats />
           <WeekContainer />
         </BodyStyled>
-
-        {statsActive ? <Stats week={weekScreenActive} /> : ""}
       </WrapperStyled>
     </ContainerStyled>
   );

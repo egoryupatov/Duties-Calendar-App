@@ -1,18 +1,18 @@
 import styled from "styled-components";
 
 export const ContainerStyled = styled.div`
-  display:flex;
+  display: flex;
   flex-direction: row;
   width: 100%;
-  height:100vh;
-`
+  height: 100vh;
+`;
 
 export const WrapperStyled = styled.div`
   display: flex;
   flex-direction: column;
   background: #f8f8f8;
   width: 100%;
-  
+  height: 100%;
 `;
 
 export const HeaderStyled = styled.div`
@@ -20,33 +20,37 @@ export const HeaderStyled = styled.div`
   flex-direction: column;
   background-color: white;
   border-bottom: #dadce0 1px solid;
-
 `;
 
 export const BodyStyled = styled.div`
   display: flex;
   background: white;
   flex-direction: row;
-  height:100%;
+  height: 100%;
+  width: 100%;
 `;
 
 export const Button = styled.button`
+  display: flex;
   background-color: transparent;
   border: 1px solid #dadce0;
   -moz-border-radius: 4px;
   border-radius: 4px;
   box-sizing: border-box;
+  font-weight: 600;
+  color: #3c4043;
+  align-items: center;
   height: 36px;
-  padding:10px;
+  padding: 10px;
   margin: 0px 5px 0px 5px;
-  font-weight: 500;
-`
+`;
 
 export const CalendarBodyStyled = styled.div`
   display: flex;
   flex-wrap: wrap;
   border-bottom: #dadce0 1px solid;
-  height:100%;
+  height: 100%;
+  width: 100%;
 `;
 
 export const Cell = styled.div`
@@ -57,7 +61,6 @@ export const Cell = styled.div`
   border-right: #dadce0 1px solid;
   border-bottom: #dadce0 1px solid;
   color: #3c4043;
-  height:calc(85vh/5);
   font-weight: 500;
   font-size: 14px;
 `;

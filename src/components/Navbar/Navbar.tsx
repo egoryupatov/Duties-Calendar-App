@@ -45,9 +45,25 @@ export const Navbar: React.FC<NavbarProps> = (props) => {
               props.currentYearNumber}
           </div>
         ) : (
-          <div>
-            {props.currentMonthNameLong + " " + props.currentYearNumber}
-          </div>
+          <>
+            <div>Duties Calendar</div>
+            <Button onClick={props.goHome}>Today</Button>
+
+            <Link
+              to={`/month/${props.selectDate.getFullYear()}/${props.prevMonth()}`}
+            >
+              <Arrow onClick={props.switchToPreviousPeriod}>{"<"}</Arrow>
+            </Link>
+            <Link
+              to={`/month/${props.selectDate.getFullYear()}/${props.nextMonth()}`}
+            >
+              <Arrow onClick={props.switchToNextPeriod}>{">"}</Arrow>
+            </Link>
+
+            <div>
+              {props.currentMonthNameLong + " " + props.currentYearNumber}
+            </div>
+          </>
         )}
       </MonthNamesContainerStyled>
 
@@ -66,25 +82,17 @@ export const Navbar: React.FC<NavbarProps> = (props) => {
             </Link>
           </>
         ) : (
-          <>
-            <Link
-              to={`/month/${props.selectDate.getFullYear()}/${props.prevMonth()}`}
-            >
-              <Arrow onClick={props.switchToPreviousPeriod}>{"<"}</Arrow>
-            </Link>
-            <Link
-              to={`/month/${props.selectDate.getFullYear()}/${props.nextMonth()}`}
-            >
-              <Arrow onClick={props.switchToNextPeriod}>{">"}</Arrow>
-            </Link>
-          </>
+          <></>
         )}
 
-        <Button onClick={props.goHome}>Today</Button>
         <Button onClick={props.customDateDisplay}>Set Custom Date</Button>
-        <Button onClick={props.switchToWeekDisplay}>Week</Button>
+        <Button
+          data-testid={"Navbar-WeekButton"}
+          onClick={props.switchToWeekDisplay}
+        >
+          Week
+        </Button>
         <Button onClick={props.switchToMonthDisplay}>Month</Button>
-        <Button onClick={props.switchStatsDisplay}>Stats</Button>
       </ButtonsContainerStyled>
 
       {props.isCustomDateActive ? <CustomDateContainer /> : ""}

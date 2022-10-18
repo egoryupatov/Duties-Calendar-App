@@ -1,5 +1,5 @@
 import React from "react";
-import {DutyCellStyled} from "../../styles/general.styled";
+import { DutyCellStyled } from "../../styles/general.styled";
 
 export interface DutyCellProps {
   day: number;

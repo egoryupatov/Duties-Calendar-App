@@ -5,14 +5,9 @@ import {
   selectCurrentDate,
   getCurrentDate,
   getDuties,
-  selectIsStatsDisplay,
   selectIsWeekDisplay,
 } from "../../store/dutiesSlice";
 import { NavbarContainer } from "../../components/Navbar/NavbarContainer";
-import {
-  DaysCell,
-  DaysContainerStyled,
-} from "../../components/Navbar/Navbar.styled";
 import { MonthContainer } from "./MonthContainer";
 import { useNavigate } from "react-router-dom";
 import {
@@ -22,14 +17,11 @@ import {
   HeaderStyled,
 } from "../../styles/general.styled";
 import { Stats } from "../../components/Stats/Stats";
-import { dayNames } from "../../constants/dayNames";
 import { getDutiesListApi } from "../../api/api";
 
 export const MonthScreen: React.FC = () => {
   const dispatch = useAppDispatch();
   const selectDate = useAppSelector(selectCurrentDate);
-  const statsActive = useAppSelector(selectIsStatsDisplay);
-  const isWeekScreenActive = useAppSelector(selectIsWeekDisplay);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -58,14 +50,11 @@ export const MonthScreen: React.FC = () => {
     dispatch(changeCalendarDisplay(true));
     navigate(
       `/week/${selectDate.getFullYear()}/${selectDate.getMonth()}/${selectDate.getDate()}`
-)
+    );
   };
 
   return (
     <ContainerStyled>
-
-
-
       <WrapperStyled>
         <HeaderStyled>
           <NavbarContainer
@@ -73,22 +62,14 @@ export const MonthScreen: React.FC = () => {
             switchToNextPeriod={switchToNextMonth}
             switchToWeekDisplay={switchToWeekDisplay}
           />
-
-
-
         </HeaderStyled>
 
         <BodyStyled>
-
-
-          <Stats week={isWeekScreenActive} />
+          <Stats />
 
           <MonthContainer />
-
-
         </BodyStyled>
       </WrapperStyled>
-
     </ContainerStyled>
   );
 };
