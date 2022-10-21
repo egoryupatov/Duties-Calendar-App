@@ -21,7 +21,7 @@ export const Month: React.FC<MonthContainerProps> = (props) => {
     <BodyContainerStyled>
       <DaysContainerStyled>
         {dayNames.map((dayName: string) => (
-          <DaysCell>{dayName}</DaysCell>
+          <DaysCell key={dayName}>{dayName}</DaysCell>
         ))}
       </DaysContainerStyled>
 

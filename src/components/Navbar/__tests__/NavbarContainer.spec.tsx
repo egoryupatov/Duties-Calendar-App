@@ -4,9 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import "@testing-library/jest-dom";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-import dutiesReducer, {
-  changeCustomDateDisplay,
-} from "../../../store/dutiesSlice";
+import dutiesReducer from "../../../store/dutiesSlice";
 import { RootState } from "../../../store/store";
 import { Store } from "@reduxjs/toolkit";
 
@@ -28,6 +26,7 @@ describe("NavbarContainer", () => {
       switchToNextPeriod: jest.fn(),
     };
     store = testStore();
+    store.dispatch = jest.fn(store.dispatch);
   });
 
   it("should be rendered", () => {
@@ -38,8 +37,10 @@ describe("NavbarContainer", () => {
         </MemoryRouter>
       </Provider>
     );
-    //переписать на динамику
-    const date = "October 2022";
+
+    const date = new Date(2022, 9, 1).toLocaleDateString("en-En", {
+      month: "long",
+    });
 
     expect(screen.getByText("October 2022")).toBeVisible();
   });
@@ -52,12 +53,43 @@ describe("NavbarContainer", () => {
         </MemoryRouter>
       </Provider>
     );
-    //expect(store.getState().duties.customDateDisplay).toBe(false);
+
+    expect(store.getState().duties.customDateDisplay).toBe(false);
     fireEvent.click(screen.getByText("Set Custom Date"));
-    //store.dispatch(changeCustomDateDisplay(true));
+    fireEvent.click(screen.getByText("Submit"));
+    expect(store.getState().duties.customDateDisplay).toBe(true);
+
+    {
+      /*
     await waitFor(() => {
       expect(store.dispatch).toHaveBeenCalledWith({});
-      expect(store.getState().duties.customDateDisplay).toBe(true);
+    });
+
+    await waitFor(() => {
+
+    });
+    */
+    }
+  });
+
+  it("should switch to the Week display after clicking on the 'Week' button", async () => {
+    render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <NavbarContainer {...navbarContainerProps} />
+        </MemoryRouter>
+      </Provider>
+    );
+
+    expect(store.getState().duties.weekDisplay).toBe(false);
+    fireEvent.click(screen.getByText("Week"));
+
+    await waitFor(() => {
+      expect(store.dispatch).toHaveBeenCalled();
+    });
+
+    await waitFor(() => {
+      expect(store.getState().duties.weekDisplay).toBe(true);
     });
   });
 });

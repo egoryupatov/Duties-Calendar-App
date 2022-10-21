@@ -5,13 +5,12 @@ import {
   Cell,
   Row,
   FirstRow,
-    FirstRowCell
+  FirstRowCell,
 } from "./EngineersList.styled";
 import { useAppSelector } from "../../store/hooks";
-import {selectDuties, selectIsWeekDisplay} from "../../store/dutiesSlice";
+import { selectDuties, selectIsWeekDisplay } from "../../store/dutiesSlice";
 
 export const EngineersList: React.FC = () => {
-
   const selector = useAppSelector(selectDuties);
   const weekScreenActive = useAppSelector(selectIsWeekDisplay);
   const engineersDuty: any = {};
@@ -20,7 +19,6 @@ export const EngineersList: React.FC = () => {
   selector.map((elem) => engineerNames.push(elem.engineer.name));
 
   selector.forEach((elem, i) => {
-
     let dutyDays = 0;
 
     for (let i = 0; i < selector.length; i++) {
@@ -29,7 +27,6 @@ export const EngineersList: React.FC = () => {
       }
     }
     engineersDuty[elem.engineer.name] = dutyDays;
-
   });
 
   const numberOfDuties = Object.entries(engineersDuty).map((entry) => ({
@@ -45,27 +42,25 @@ export const EngineersList: React.FC = () => {
           <FirstRowCell>DUTIES</FirstRowCell>
         </FirstRow>
 
-
-        {weekScreenActive ?
-
-            numberOfDuties.map((elem: { days: number; name: string }) => (
-                  <Row>
-                    <Cell>{elem.name}</Cell>
-                    <Cell justify={"center"}>{elem.days}</Cell>
-                  </Row>
-              ))
-
-        :
-
-            numberOfDuties.map((elem: { days: number; name: string }) => (
-                  <Row>
-                    <Cell>{elem.name}</Cell>
-                    <Cell justify={"center"}>{elem.days}</Cell>
-                  </Row>
-              ))
-        }
-
-
+        {weekScreenActive
+          ? numberOfDuties.map((elem: { days: number; name: string }) => (
+              <Row>
+                <Cell key={elem.name}>{elem.name}</Cell>
+                <Cell justify={"center"} key={elem.days}>
+                  {elem.days}
+                </Cell>
+              </Row>
+            ))
+          : numberOfDuties.map((elem: { days: number; name: string }) => (
+              <Row>
+                <Cell key={elem.name}>
+                  <div data-testid="engineerName">{elem.name}</div>
+                </Cell>
+                <Cell justify={"center"} key={elem.days}>
+                  {elem.days}
+                </Cell>
+              </Row>
+            ))}
       </EngineersTable>
     </EngineersListStyled>
   );
