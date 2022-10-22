@@ -54,11 +54,12 @@ export const Arrow = styled.button`
   display: inline-block;
   border: none;
   background-color: white;
+  transition: background-color, opacity 100ms linear;
+  cursor: pointer;
 
   &:hover {
-    background-color: #f6f6f6;
+    background-color: #f1f3f4;
     border-radius: 20px;
     border: none;
-    transition: background-color, opacity 100ms linear;
   }
 `;

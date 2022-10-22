@@ -44,6 +44,12 @@ export const Button = styled.button`
   padding: 10px;
   margin: 0px 5px 0px 5px;
   justify-content: center;
+  transition: background-color 100ms linear;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f1f3f4;
+  }
 `;
 
 export const CalendarBodyStyled = styled.div`
