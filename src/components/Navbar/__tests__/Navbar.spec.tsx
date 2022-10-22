@@ -31,7 +31,7 @@ describe("Navbar", () => {
     };
   });
 
-  it("should render", () => {
+  it("should be rendered", () => {
     render(
       <MemoryRouter>
         <Navbar {...navbarProps} />
@@ -50,7 +50,6 @@ describe("Navbar", () => {
 
     fireEvent.click(screen.getByText("Set Custom Date"));
     expect(navbarProps.customDateDisplay).toHaveBeenCalled();
-    expect(navbarProps.customDateDisplay).toHaveBeenCalledTimes(1);
   });
 
   it("the 'Week' button should be clickable", () => {
@@ -60,8 +59,51 @@ describe("Navbar", () => {
       </MemoryRouter>
     );
 
-    fireEvent.click(screen.getByTestId("Navbar-WeekButton"));
+    fireEvent.click(screen.getByText("Week"));
     expect(navbarProps.switchToWeekDisplay).toHaveBeenCalled();
-    expect(navbarProps.switchToWeekDisplay).toHaveBeenCalledTimes(1);
+  });
+
+  it("the 'Month' button should be clickable", () => {
+    render(
+      <MemoryRouter>
+        <Navbar {...navbarProps} />
+      </MemoryRouter>
+    );
+
+    fireEvent.click(screen.getByText("Month"));
+    expect(navbarProps.switchToMonthDisplay).toHaveBeenCalled();
+  });
+
+  it("the 'Today' button should be clickable", () => {
+    render(
+      <MemoryRouter>
+        <Navbar {...navbarProps} />
+      </MemoryRouter>
+    );
+
+    fireEvent.click(screen.getByText("Today"));
+    expect(navbarProps.goHome).toHaveBeenCalled();
+  });
+
+  it("the 'Next' button should be clickable", () => {
+    render(
+      <MemoryRouter>
+        <Navbar {...navbarProps} />
+      </MemoryRouter>
+    );
+
+    fireEvent.click(screen.getByText(">"));
+    expect(navbarProps.switchToNextPeriod).toHaveBeenCalled();
+  });
+
+  it("the 'Back' button should be clickable", () => {
+    render(
+      <MemoryRouter>
+        <Navbar {...navbarProps} />
+      </MemoryRouter>
+    );
+
+    fireEvent.click(screen.getByText("<"));
+    expect(navbarProps.switchToPreviousPeriod).toHaveBeenCalled();
   });
 });

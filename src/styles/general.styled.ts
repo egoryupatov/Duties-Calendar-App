@@ -43,6 +43,7 @@ export const Button = styled.button`
   height: 36px;
   padding: 10px;
   margin: 0px 5px 0px 5px;
+  justify-content: center;
 `;
 
 export const CalendarBodyStyled = styled.div`

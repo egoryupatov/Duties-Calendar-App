@@ -44,21 +44,17 @@ export const EngineersList: React.FC = () => {
 
         {weekScreenActive
           ? numberOfDuties.map((elem: { days: number; name: string }) => (
-              <Row>
-                <Cell key={elem.name}>{elem.name}</Cell>
-                <Cell justify={"center"} key={elem.days}>
-                  {elem.days}
-                </Cell>
+              <Row key={elem.name}>
+                <Cell>{elem.name}</Cell>
+                <Cell justify={"center"}>{elem.days}</Cell>
               </Row>
             ))
           : numberOfDuties.map((elem: { days: number; name: string }) => (
-              <Row>
-                <Cell key={elem.name}>
-                  <div data-testid="engineerName">{elem.name}</div>
+              <Row key={elem.name}>
+                <Cell>
+                  <div>{elem.name}</div>
                 </Cell>
-                <Cell justify={"center"} key={elem.days}>
-                  {elem.days}
-                </Cell>
+                <Cell justify={"center"}>{elem.days}</Cell>
               </Row>
             ))}
       </EngineersTable>

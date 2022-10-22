@@ -86,12 +86,7 @@ export const Navbar: React.FC<NavbarProps> = (props) => {
         )}
 
         <Button onClick={props.customDateDisplay}>Set Custom Date</Button>
-        <Button
-          data-testid={"Navbar-WeekButton"}
-          onClick={props.switchToWeekDisplay}
-        >
-          Week
-        </Button>
+        <Button onClick={props.switchToWeekDisplay}>Week</Button>
         <Button onClick={props.switchToMonthDisplay}>Month</Button>
       </ButtonsContainerStyled>
 

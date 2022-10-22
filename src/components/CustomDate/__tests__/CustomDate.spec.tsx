@@ -1,23 +1,10 @@
 import { CustomDate } from "../CustomDate";
-import { fireEvent, getByText, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { CustomDateContainerProps } from "../CustomDate";
-import { configureStore, Store } from "@reduxjs/toolkit";
-import dutiesReducer from "../../../store/dutiesSlice";
-import { RootState } from "../../../store/store";
-import { Provider } from "react-redux";
 import "@testing-library/jest-dom";
-
-const testStore = () => {
-  return configureStore({
-    reducer: {
-      duties: dutiesReducer,
-    },
-  });
-};
 
 describe("CustomDate", () => {
   let customDateContainerProps: CustomDateContainerProps;
-  let store: Store<RootState>;
 
   beforeEach(() => {
     customDateContainerProps = {
@@ -39,13 +26,19 @@ describe("CustomDate", () => {
     expect(customDateContainerProps.onSubmit).toHaveBeenCalled();
   });
 
-  it("should allow to change the date", () => {
+  it("should allow to change the year", () => {
     render(<CustomDate {...customDateContainerProps} />);
-    fireEvent.click(screen.getByTestId("customDateYearInput"));
-    fireEvent.click(screen.getByText("2021"));
+    fireEvent.change(screen.getByTestId("customDateYearInput"), {
+      target: { value: "2021" },
+    });
     expect(customDateContainerProps.handleYearChange).toHaveBeenCalled();
+  });
 
-    //как проверить выбор параметра в инпуте
-    //как сделать диспатч состояния что выбрана кастомная дата
+  it("should allow to change the month", () => {
+    render(<CustomDate {...customDateContainerProps} />);
+    fireEvent.change(screen.getByTestId("customDateMonthInput"), {
+      target: { value: "8" },
+    });
+    expect(customDateContainerProps.handleMonthChange).toHaveBeenCalled();
   });
 });

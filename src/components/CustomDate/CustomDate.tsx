@@ -39,7 +39,11 @@ export const CustomDate: React.FC<CustomDateContainerProps> = (props) => {
         </div>
 
         <div>
-          <select onChange={props.handleMonthChange} name="month">
+          <select
+            data-testid="customDateMonthInput"
+            onChange={props.handleMonthChange}
+            name="month"
+          >
             {props.month.map((month: number) => (
               <option value={month} key={month}>
                 {month}
