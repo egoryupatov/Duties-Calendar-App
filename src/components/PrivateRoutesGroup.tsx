@@ -1,17 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { MonthScreen } from "../screens/MonthScreen/MonthScreen";
 import { LoginPage } from "./LoginPage/LoginPage";
 
 export const PrivateRoutesGroup = () => {
-  const [isUserAuth, setIsAuth] = useState(false);
+  const isUserAuthorized = localStorage.getItem("token");
 
-  const handleUserAuth = () => {
-    setIsAuth(true);
-  };
-
-  if (!isUserAuth) {
-    return <LoginPage handleUserAuth={handleUserAuth} />;
+  if (!isUserAuthorized) {
+    return <LoginPage />;
   }
 
   return (

@@ -6,17 +6,15 @@ import {
   LoginPageInputStyled,
 } from "./LoginPage.styled";
 import { Button } from "../../styles/general.styled";
+import { useNavigate } from "react-router-dom";
 
-interface LoginPageProps {
-  handleUserAuth: () => void;
-}
-
-export const LoginPage = (props: LoginPageProps) => {
+export const LoginPage = () => {
   const admin = { login: "admin", password: "qwerty" };
 
   const [userLogin, setUserLogin] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [wrongData, setWrongData] = useState(false);
+  const navigate = useNavigate();
 
   const handleUserLogin = (event: any) => {
     setUserLogin(event.target.value);
@@ -30,7 +28,7 @@ export const LoginPage = (props: LoginPageProps) => {
     if (userLogin === admin.login && userPassword === admin.password) {
       setWrongData(false);
       localStorage.setItem("token", "admin");
-      props.handleUserAuth();
+      navigate("/");
     } else {
       setWrongData(true);
     }
