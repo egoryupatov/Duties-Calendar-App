@@ -10,30 +10,17 @@ import {
 import { useAppSelector } from "../../store/hooks";
 import { selectDuties, selectIsWeekDisplay } from "../../store/dutiesSlice";
 
-export const EngineersList: React.FC = () => {
-  const selector = useAppSelector(selectDuties);
-  const weekScreenActive = useAppSelector(selectIsWeekDisplay);
-  const engineersDuty: any = {};
-  let engineerNames: string[] = [];
+interface NumberOfDuties {
+  name: string;
+  days: number;
+}
 
-  selector.map((elem) => engineerNames.push(elem.engineer.name));
+interface EngineersListProps {
+  weekScreenActive: boolean;
+  numberOfDuties: NumberOfDuties[];
+}
 
-  selector.forEach((elem, i) => {
-    let dutyDays = 0;
-
-    for (let i = 0; i < selector.length; i++) {
-      if (elem.engineer.name === engineerNames[i]) {
-        dutyDays += 1;
-      }
-    }
-    engineersDuty[elem.engineer.name] = dutyDays;
-  });
-
-  const numberOfDuties = Object.entries(engineersDuty).map((entry) => ({
-    name: entry[0],
-    days: Number(entry[1]),
-  }));
-
+export const EngineersList: React.FC<EngineersListProps> = (props) => {
   return (
     <EngineersListStyled>
       <EngineersTable>
@@ -42,14 +29,14 @@ export const EngineersList: React.FC = () => {
           <FirstRowCell>DUTIES</FirstRowCell>
         </FirstRow>
 
-        {weekScreenActive
-          ? numberOfDuties.map((elem: { days: number; name: string }) => (
+        {props.weekScreenActive
+          ? props.numberOfDuties.map((elem: { days: number; name: string }) => (
               <Row key={elem.name}>
                 <Cell>{elem.name}</Cell>
                 <Cell justify={"center"}>{elem.days}</Cell>
               </Row>
             ))
-          : numberOfDuties.map((elem: { days: number; name: string }) => (
+          : props.numberOfDuties.map((elem: { days: number; name: string }) => (
               <Row key={elem.name}>
                 <Cell>
                   <div>{elem.name}</div>

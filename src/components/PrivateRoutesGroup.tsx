@@ -2,12 +2,13 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { MonthScreen } from "../screens/MonthScreen/MonthScreen";
 import { LoginPage } from "./LoginPage/LoginPage";
+import { LoginPageContainer } from "./LoginPage/LoginPageContainer";
 
 export const PrivateRoutesGroup = () => {
   const isUserAuthorized = localStorage.getItem("token");
 
   if (!isUserAuthorized) {
-    return <LoginPage />;
+    return <LoginPageContainer />;
   }
 
   return (

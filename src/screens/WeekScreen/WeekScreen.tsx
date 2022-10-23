@@ -1,16 +1,10 @@
 import React, { useEffect } from "react";
 import { NavbarContainer } from "../../components/Navbar/NavbarContainer";
-import {
-  DaysCell,
-  DaysContainerStyled,
-} from "../../components/Navbar/Navbar.styled";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
   selectCurrentDate,
   getCurrentDate,
   getDuties,
-  selectIsStatsDisplay,
-  selectIsWeekDisplay,
 } from "../../store/dutiesSlice";
 import { useNavigate } from "react-router-dom";
 import { WeekContainer } from "./WeekContainer";
@@ -21,9 +15,8 @@ import {
   BodyStyled,
   HeaderStyled,
 } from "../../styles/general.styled";
-import { Stats } from "../../components/Stats/Stats";
 import { getDutiesListApi } from "../../api/api";
-import { dayNames } from "../../constants/dayNames";
+import { EngineersListContainer } from "../../components/EngineersList/EngineersListContainer";
 
 export const WeekScreen: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -77,7 +70,7 @@ export const WeekScreen: React.FC = () => {
         </HeaderStyled>
 
         <BodyStyled>
-          <Stats />
+          <EngineersListContainer />
           <WeekContainer />
         </BodyStyled>
       </WrapperStyled>

@@ -12,8 +12,8 @@ export const LoginPageContainerStyled = styled.div`
 
 export const LoginPageWrapperStyled = styled.div`
   display: flex;
-  width: 20vw;
-  height: 30vh;
+  width: auto;
+  height: auto;
   background: white;
   border: #dadce0 1px solid;
   border-radius: 10px;
@@ -24,13 +24,12 @@ export const LoginPageWrapperStyled = styled.div`
 export const LoginPageFormStyled = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px 20px 10px 20px;
+  padding: 20px 20px 20px 20px;
   gap: 10px;
 `;
 
 export const LoginPageInputStyled = styled.input`
   height: 36px;
-  width: 100%;
   border: #dadce0 1px solid;
   border-radius: 5px;
   padding: 10px;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   LoginPageContainerStyled,
   LoginPageWrapperStyled,
@@ -6,34 +6,15 @@ import {
   LoginPageInputStyled,
 } from "./LoginPage.styled";
 import { Button } from "../../styles/general.styled";
-import { useNavigate } from "react-router-dom";
 
-export const LoginPage = () => {
-  const admin = { login: "admin", password: "qwerty" };
+interface LoginPageProps {
+  handleUserLogin: (event: any) => void;
+  handleUserPassword: (event: any) => void;
+  handleSubmit: () => void;
+  wrongData: boolean;
+}
 
-  const [userLogin, setUserLogin] = useState("");
-  const [userPassword, setUserPassword] = useState("");
-  const [wrongData, setWrongData] = useState(false);
-  const navigate = useNavigate();
-
-  const handleUserLogin = (event: any) => {
-    setUserLogin(event.target.value);
-  };
-
-  const handleUserPassword = (event: any) => {
-    setUserPassword(event.target.value);
-  };
-
-  const handleSubmit = () => {
-    if (userLogin === admin.login && userPassword === admin.password) {
-      setWrongData(false);
-      localStorage.setItem("token", "admin");
-      navigate("/");
-    } else {
-      setWrongData(true);
-    }
-  };
-
+export const LoginPage: React.FC<LoginPageProps> = (props) => {
   return (
     <LoginPageContainerStyled>
       <LoginPageWrapperStyled>
@@ -43,17 +24,17 @@ export const LoginPage = () => {
             type="text"
             name="login"
             placeholder="Login"
-            onChange={handleUserLogin}
+            onChange={props.handleUserLogin}
           ></LoginPageInputStyled>
           <LoginPageInputStyled
             type="password"
             name="password"
             placeholder="Password"
-            onChange={handleUserPassword}
+            onChange={props.handleUserPassword}
           ></LoginPageInputStyled>
-          <Button onClick={handleSubmit}>Login</Button>
+          <Button onClick={props.handleSubmit}>Login</Button>
         </LoginPageFormStyled>
-        {wrongData ? (
+        {props.wrongData ? (
           <div style={{ color: "red" }}>You entered the wrong data!</div>
         ) : (
           ""

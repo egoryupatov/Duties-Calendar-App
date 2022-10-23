@@ -16,8 +16,8 @@ import {
   BodyStyled,
   HeaderStyled,
 } from "../../styles/general.styled";
-import { Stats } from "../../components/Stats/Stats";
 import { getDutiesListApi } from "../../api/api";
+import { EngineersListContainer } from "../../components/EngineersList/EngineersListContainer";
 
 export const MonthScreen: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -65,7 +65,7 @@ export const MonthScreen: React.FC = () => {
         </HeaderStyled>
 
         <BodyStyled>
-          <Stats />
+          <EngineersListContainer />
 
           <MonthContainer />
         </BodyStyled>
