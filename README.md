@@ -4,7 +4,7 @@ First, enter in your terminal:
 
 `npm start`
 
-Then, you the following login an password to sign in:
+Then, you the following login and password to sign in:
 
  - Login: admin
  - Password: qwerty
