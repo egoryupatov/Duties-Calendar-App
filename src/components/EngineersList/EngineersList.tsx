@@ -7,8 +7,6 @@ import {
   FirstRow,
   FirstRowCell,
 } from "./EngineersList.styled";
-import { useAppSelector } from "../../store/hooks";
-import { selectDuties, selectIsWeekDisplay } from "../../store/dutiesSlice";
 
 interface NumberOfDuties {
   name: string;

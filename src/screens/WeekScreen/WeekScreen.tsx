@@ -55,7 +55,9 @@ export const WeekScreen: React.FC = () => {
 
   const switchToMonthDisplay = () => {
     dispatch(changeCalendarDisplay(false));
-    navigate(`/month/${selectDate.getFullYear()}/${selectDate.getMonth()}`);
+    navigate(
+      `/month/${selectDate.getFullYear()}/${selectDate.getMonth()}/${selectDate.getDate()}`
+    );
   };
 
   return (

@@ -5,7 +5,6 @@ import {
   selectCurrentDate,
   getCurrentDate,
   getDuties,
-  selectIsWeekDisplay,
 } from "../../store/dutiesSlice";
 import { NavbarContainer } from "../../components/Navbar/NavbarContainer";
 import { MonthContainer } from "./MonthContainer";

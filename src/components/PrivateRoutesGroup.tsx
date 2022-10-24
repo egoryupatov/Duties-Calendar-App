@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { MonthScreen } from "../screens/MonthScreen/MonthScreen";
-import { LoginPage } from "./LoginPage/LoginPage";
 import { LoginPageContainer } from "./LoginPage/LoginPageContainer";
+import { WeekScreen } from "../screens/WeekScreen/WeekScreen";
 
 export const PrivateRoutesGroup = () => {
   const isUserAuthorized = localStorage.getItem("token");
@@ -14,6 +14,7 @@ export const PrivateRoutesGroup = () => {
   return (
     <Routes>
       <Route path=":year/:month/:day" element={<MonthScreen />} />
+      <Route path=":year/:month/:day" element={<WeekScreen />} />
     </Routes>
   );
 };

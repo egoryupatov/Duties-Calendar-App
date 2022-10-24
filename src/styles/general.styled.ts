@@ -75,10 +75,12 @@ export const Cell = styled.div`
 export const DutyCellStyled = styled(Cell)`
   background-color: #f7fff0;
   flex-direction: column;
+  height: auto;
 `;
 
 export const CellOut = styled(Cell)`
   color: #cacaca;
+  height: auto;
 `;
 
 export const WeekCell = styled.div`
