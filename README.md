@@ -1,6 +1,10 @@
-#How to launch the app?
+# How to launch the app?
 
-npm start
+First, enter in your terminal:
 
-Login: admin
-Password: qwerty
+`npm start`
+
+Then, you the following login an password to sign in:
+
+ - Login: admin
+ - Password: qwerty
