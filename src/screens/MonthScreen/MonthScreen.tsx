@@ -33,7 +33,11 @@ export const MonthScreen: React.FC = () => {
   const switchToNextMonth = () => {
     dispatch(
       getCurrentDate(
-        new Date(selectDate.getFullYear(), selectDate.getMonth() + 1)
+        new Date(
+          selectDate.getFullYear(),
+          selectDate.getMonth() + 1,
+          selectDate.getDate()
+        )
       )
     );
   };
@@ -41,7 +45,11 @@ export const MonthScreen: React.FC = () => {
   const switchToPreviousMonth = () => {
     dispatch(
       getCurrentDate(
-        new Date(selectDate.getFullYear(), selectDate.getMonth() - 1)
+        new Date(
+          selectDate.getFullYear(),
+          selectDate.getMonth() - 1,
+          selectDate.getDate()
+        )
       )
     );
   };

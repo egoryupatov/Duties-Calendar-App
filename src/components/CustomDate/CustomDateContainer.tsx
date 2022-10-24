@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { useAppDispatch } from "../../store/hooks";
-import { getCurrentDate } from "../../store/dutiesSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { getCurrentDate, selectCurrentDate } from "../../store/dutiesSlice";
 import { useNavigate } from "react-router-dom";
 import { CustomDate } from "./CustomDate";
 
 export const CustomDateContainer: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const currentDate = useAppSelector(selectCurrentDate);
 
   const years = [];
   const month = [];
@@ -33,7 +34,9 @@ export const CustomDateContainer: React.FC = () => {
     dispatch(getCurrentDate(new Date(date.chosenYear, date.chosenMonth)));
 
     const goToPage = () =>
-        navigate(`/month/${date.chosenYear}/${date.chosenMonth}`);
+      navigate(
+        `/month/${date.chosenYear}/${date.chosenMonth}/${currentDate.getDate()}`
+      );
 
     goToPage();
   };
@@ -47,12 +50,12 @@ export const CustomDateContainer: React.FC = () => {
   };
 
   return (
-      <CustomDate
-          onSubmit={onSubmit}
-          handleYearChange={handleYearChange}
-          handleMonthChange={handleMonthChange}
-          years={years}
-          month={month}
-      />
+    <CustomDate
+      onSubmit={onSubmit}
+      handleYearChange={handleYearChange}
+      handleMonthChange={handleMonthChange}
+      years={years}
+      month={month}
+    />
   );
 };

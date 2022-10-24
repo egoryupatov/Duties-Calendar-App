@@ -57,8 +57,6 @@ export const selectDuties = (state: RootState) => state.duties.dutiesSchedule;
 export const selectCurrentDate = (state: RootState) => state.duties.currentDate;
 export const selectIsWeekDisplay = (state: RootState) =>
   state.duties.weekDisplay;
-export const selectIsStatsDisplay = (state: RootState) =>
-  state.duties.statsDisplay;
 export const selectIsCustomDateActive = (state: RootState) =>
   state.duties.customDateDisplay;
 
@@ -67,7 +65,10 @@ export const sortedDuties = createSelector(selectDuties, (DutiesState) => {
 
   DutiesState.forEach((elem) => {
     const date = new Date(elem.dutyStartDate);
-    dutiesMap[date.getDate()] = elem;
+
+    if (elem.dutyStartDate !== null) {
+      dutiesMap[date.getDate()] = elem;
+    }
   });
 
   return dutiesMap;

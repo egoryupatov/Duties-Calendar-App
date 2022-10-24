@@ -50,12 +50,12 @@ export const Navbar: React.FC<NavbarProps> = (props) => {
             <Button onClick={props.goHome}>Today</Button>
 
             <Link
-              to={`/month/${props.selectDate.getFullYear()}/${props.prevMonth()}`}
+              to={`/month/${props.selectDate.getFullYear()}/${props.prevMonth()}/${props.selectDate.getDate()}`}
             >
               <Arrow onClick={props.switchToPreviousPeriod}>{"<"}</Arrow>
             </Link>
             <Link
-              to={`/month/${props.selectDate.getFullYear()}/${props.nextMonth()}`}
+              to={`/month/${props.selectDate.getFullYear()}/${props.nextMonth()}/${props.selectDate.getDate()}`}
             >
               <Arrow onClick={props.switchToNextPeriod}>{">"}</Arrow>
             </Link>
